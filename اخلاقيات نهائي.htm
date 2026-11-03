@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Nursing Ethics </title>
+    <style>
+        /* ===== BASE ===== */
+        :root {
+            --bg1: #0a0e1a;
+            --bg2: #141e33;
+            --primary: #00d4ff;
+            --primary-dark: #0099cc;
+            --accent: #facc15;
+            --danger: #f87171;
+            --success: #34d399;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text: #e8edf5;
+            --muted: #94a3b8;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 30px rgba(0, 212, 255, 0.06);
+            --radius: 16px;
+            --header-bg: rgba(255, 255, 255, 0.03);
+            --header-border: rgba(255, 255, 255, 0.04);
+            --footer-border: rgba(255, 255, 255, 0.03);
+            --table-header-bg: rgba(0, 212, 255, 0.08);
+            --card-title-bg: rgba(0, 212, 255, 0.06);
+            --highlight-bg: #facc15;
+            --highlight-text: #0f172a;
+        }
+
+        [data-theme="light"] {
+            --bg1: #f0f4f8;
+            --bg2: #e2e8f0;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --text: #0f172a;
+            --muted: #475569;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --glow: 0 0 30px rgba(0, 212, 255, 0.02);
+            --header-bg: rgba(255, 255, 255, 0.7);
+            --header-border: rgba(0, 0, 0, 0.04);
+            --footer-border: rgba(0, 0, 0, 0.04);
+            --table-header-bg: rgba(0, 212, 255, 0.12);
+            --card-title-bg: rgba(0, 212, 255, 0.08);
+            --highlight-bg: #facc15;
+            --highlight-text: #0f172a;
+        }
+
+        .highlight-text {
+            background-color: var(--highlight-bg);
+            color: var(--highlight-text);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--bg1), var(--bg2), #0f1a2b);
+            min-height: 100vh;
+            color: var(--text);
+            padding: 16px 8px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            transition: background 0.4s ease;
+        }
+        .app { max-width: 1100px; width: 100%; }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 16px 16px;
+            background: var(--header-bg);
+            border-radius: 20px;
+            border: 1px solid var(--header-border);
+            backdrop-filter: blur(4px);
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 4px 25px rgba(0, 212, 255, 0.15);
+            transition: color 0.3s ease;
+        }
+        [data-theme="light"] .header h1 { color: #0f172a; text-shadow: none; }
+        .header h1 .highlight {
+            background: linear-gradient(135deg, var(--primary), #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .sub {
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+        .header .creator {
+            color: var(--muted);
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+        .header .creator .name { color: var(--text); font-weight: 700; }
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+        }
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.08);
+            transform: scale(1.05);
+        }
+        [data-theme="light"] .theme-toggle {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+
+        /* ===== TABS ===== */
+        .tabs-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+            justify-content: center;
+        }
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 8px 14px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            line-height: 1.3;
+        }
+        .tab-btn:hover { border-color: var(--primary); color: var(--text); }
+        .tab-btn.active {
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.08);
+            color: var(--primary);
+        }
+        .tab-btn .en { display: block; font-size: 0.7rem; }
+        .tab-btn .ar { display: block; font-size: 0.55rem; opacity: 0.7; }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow), var(--glow);
+            padding: 18px 14px;
+            margin-bottom: 16px;
+            transition: background 0.3s ease, border 0.3s ease;
+            display: none;
+        }
+        .card.active { display: block; }
+        .card h2 {
+            font-size: 1.3rem;
+            color: var(--text);
+            border-right: 4px solid var(--primary);
+            padding-right: 12px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        /* ===== SLIDES ===== */
+        .slide-container {
+            position: relative;
+            min-height: 300px;
+        }
+        .slide {
+            display: none;
+            animation: fadeSlide 0.3s ease;
+        }
+        .slide.active { display: block; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateX(15px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+        .slide-progress .bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            margin: 0 12px;
+            overflow: hidden;
+        }
+        .slide-progress .bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #818cf8);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        .slide-progress .count {
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .slide-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .slide-nav .btn-nav {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 80px;
+            text-align: center;
+        }
+        .slide-nav .btn-nav:hover:not(:disabled) {
+            background: rgba(0, 212, 255, 0.08);
+            border-color: var(--primary);
+        }
+        .slide-nav .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+        .slide-nav .btn-nav.primary {
+            background: var(--primary);
+            color: #0a0e1a;
+            border-color: var(--primary);
+        }
+        .slide-nav .btn-nav.primary:hover:not(:disabled) {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        [data-theme="light"] .slide-nav .btn-nav {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin-bottom: 8px;
+        }
+
+        .topic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 14px 14px 12px;
+            transition: border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .topic-card:hover { border-color: var(--primary); }
+
+        .topic-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--card-title-bg);
+        }
+        .topic-card .card-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary);
+            line-height: 1.4;
+            flex: 1;
+        }
+        .topic-card .card-title-ar {
+            color: var(--muted);
+            font-weight: 400;
+            display: none;
+        }
+        .topic-card .card-title-ar.show { display: inline; }
+        .topic-card .card-title-en { display: inline; }
+        .topic-card .card-title-en.hidden { display: none; }
+
+        .topic-card .translate-btn {
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 3px 12px;
+            font-size: 0.6rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-right: 8px;
+        }
+        .topic-card .translate-btn:hover {
+            background: rgba(0, 212, 255, 0.18);
+            border-color: var(--primary);
+        }
+        .topic-card .translate-btn.active {
+            background: rgba(0, 212, 255, 0.18);
+            border-color: var(--primary);
+        }
+
+        .topic-card .card-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+        .topic-card .card-items li {
+            padding: 4px 0 4px 0;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        [data-theme="light"] .topic-card .card-items li {
+            border-bottom-color: rgba(0, 0, 0, 0.04);
+        }
+        .topic-card .card-items li:last-child { border-bottom: none; }
+
+        /* ===== TTS: English text clickable, NO speaker icon ===== */
+        .topic-card .item-en {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: block;
+            text-align: left;
+            direction: ltr;
+            cursor: pointer;
+            transition: color 0.2s ease, background 0.2s ease;
+            border-radius: 4px;
+            padding: 1px 3px;
+            margin-left: -3px;
+        }
+        .topic-card .item-en:hover {
+            color: var(--primary);
+            background: rgba(0, 212, 255, 0.06);
+        }
+        .topic-card .item-en.speaking {
+            color: var(--primary);
+            background: rgba(0, 212, 255, 0.12);
+        }
+
+        .topic-card .item-ar {
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.6;
+            text-align: right;
+            direction: rtl;
+            display: none;
+            margin-top: 2px;
+            padding-right: 8px;
+            border-right: 2px solid rgba(0, 212, 255, 0.2);
+        }
+        .topic-card .item-ar.show { display: block; }
+
+        .topic-card .card-items.numbered {
+            counter-reset: item-counter;
+        }
+        .topic-card .card-items.numbered li {
+            padding-right: 28px;
+            position: relative;
+            counter-increment: item-counter;
+        }
+        .topic-card .card-items.numbered li::before {
+            content: counter(item-counter) "-";
+            position: absolute;
+            right: 2px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* ===== TABLES ===== */
+        .info-table-wrap {
+            overflow-x: auto;
+            margin: 12px 0;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            grid-column: 1 / -1;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            min-width: 500px;
+        }
+        .info-table th {
+            background: var(--table-header-bg);
+            color: var(--primary);
+            padding: 8px 6px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            font-weight: 700;
+        }
+        .info-table td {
+            padding: 8px 6px;
+            border-bottom: 1px solid var(--card-border);
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .info-table tr:last-child td { border-bottom: none; }
+        .info-table .ar-text {
+            border-right: none;
+            padding-right: 0;
+            margin-top: 2px;
+            font-size: 0.78rem;
+            display: block;
+            color: var(--muted);
+        }
+        .info-table .en-text {
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: color 0.2s ease, background 0.2s ease;
+            border-radius: 4px;
+            padding: 1px 3px;
+            margin-left: -3px;
+            display: inline-block;
+            text-align: left;
+            direction: ltr;
+        }
+        .info-table .en-text:hover {
+            color: var(--primary);
+            background: rgba(0, 212, 255, 0.06);
+        }
+        .info-table .en-text.speaking {
+            color: var(--primary);
+            background: rgba(0, 212, 255, 0.12);
+        }
+
+        @media (max-width: 600px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .info-table { font-size: 0.72rem; min-width: 350px; }
+            .topic-card .card-title { font-size: 0.85rem; }
+        }
+
+        .footer-credit {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.12);
+            font-size: 0.7rem;
+            margin-top: 24px;
+            padding: 10px 0;
+            border-top: 1px solid var(--footer-border);
+        }
+        [data-theme="light"] .footer-credit { color: rgba(0, 0, 0, 0.2); }
+        .footer-credit .name { color: var(--primary); font-weight: 600; }
+
+        @media (max-width: 768px) {
+            body { padding: 8px 4px; }
+            .header h1 { font-size: 1.4rem; }
+            .tab-btn { padding: 6px 10px; font-size: 0.6rem; }
+            .card { padding: 14px 10px; }
+            .card h2 { font-size: 1.1rem; }
+        }
+
+        .topic-card.full-width { grid-column: 1 / -1; }
+
+        /* ===== PDF DOWNLOAD BUTTON ===== */
+        .pdf-btn {
+            background: rgba(248, 113, 113, 0.1);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+            border-radius: 30px;
+            padding: 8px 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--danger);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .pdf-btn:hover {
+            background: rgba(248, 113, 113, 0.2);
+            border-color: var(--danger);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app">
+        <div class="header">
+            <div class="header-top">
+                <div>
+                    <h1><span class="highlight">Nursing Ethics</span></h1>
+                    <div class="sub"> </div>
+                    <div class="creator">Created by <span class="name">MR. YASSIN THARWAT</span></div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تبديل الوضع">☀</button>
+            </div>
+        </div>
+
+        <div class="tabs-wrap" id="tabsContainer"></div>
+        <div id="sectionsContainer"></div>
+        <div class="footer-credit">
+            Created by <span class="name">MR. YASSIN THARWAT</span>
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        //  THEME
+        // ================================================================
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeToggle').textContent = theme === 'light' ? '☾' : '☀';
+            localStorage.setItem('theme', theme);
+            currentTheme = theme;
+        }
+        function toggleTheme() { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); }
+
+        // ================================================================
+        //  SLIDE SYSTEM
+        // ================================================================
+        let slideState = {};
+
+        function initSlideState(partId, totalSlides) {
+            slideState[partId] = { current: 0, total: totalSlides };
+        }
+
+        function renderSlide(partId, containerId) {
+            const state = slideState[partId];
+            if (!state) return;
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const slides = container.querySelectorAll('.slide');
+            slides.forEach((s, i) => s.classList.toggle('active', i === state.current));
+            const progressBar = container.querySelector('.slide-progress .fill');
+            const countSpan = container.querySelector('.slide-progress .count');
+            if (progressBar) progressBar.style.width = ((state.current + 1) / state.total * 100) + '%';
+            if (countSpan) countSpan.textContent = `${state.current + 1} / ${state.total}`;
+            const prevBtn = container.querySelector('.btn-nav.prev');
+            const nextBtn = container.querySelector('.btn-nav.next');
+            if (prevBtn) prevBtn.disabled = state.current === 0;
+            if (nextBtn) nextBtn.disabled = state.current === state.total - 1;
+        }
+
+        function goToSlide(partId, containerId, index) {
+            const state = slideState[partId];
+            if (!state) return;
+            if (index < 0) index = 0;
+            if (index >= state.total) index = state.total - 1;
+            state.current = index;
+            renderSlide(partId, containerId);
+        }
+
+        // ================================================================
+        //  HELPERS
+        // ================================================================
+        function stripHTML(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+
+        function createSlideHTML(title, cardsHTML) {
+            return `
+                <div class="slide">
+                    <h3 style="font-size:1.1rem; color:var(--primary); margin-bottom:12px; border-right:3px solid var(--primary); padding-right:10px;">${title}</h3>
+                    <div class="cards-grid">${cardsHTML}</div>
+                </div>
+            `;
+        }
+
+        function card(title, items, arTitle = '') {
+            const cardId = 'c' + Math.random().toString(36).substr(2, 8);
+            const itemsHTML = items.map((item) => {
+                const en = item.en || item;
+                const ar = item.ar || '';
+                return `<li><span class="item-en" data-text="${stripHTML(en).replace(/"/g, '&quot;')}">${en}</span><span class="item-ar">${ar}</span></li>`;
+            }).join('');
+            const listClass = items.some(i => i.en && i.en.match(/^\d/)) ? 'card-items numbered' : 'card-items simple';
+            return `
+                <div class="topic-card" data-card="${cardId}">
+                    <div class="card-header">
+                        <span class="card-title">
+                            <span class="card-title-en">${title}</span>
+                            <span class="card-title-ar" id="${cardId}-title-ar">${arTitle}</span>
+                        </span>
+                        <button class="translate-btn" data-card="${cardId}" onclick="toggleCardTranslation('${cardId}')">ترجمة</button>
+                    </div>
+                    <ul class="${listClass}">${itemsHTML}</ul>
+                </div>
+            `;
+        }
+
+        function tableCard(title, tableHTML, arTitle = '') {
+            return `
+                <div class="topic-card full-width">
+                    <div class="card-header">
+                        <span class="card-title">
+                            <span class="card-title-en">${title}</span>
+                            <span class="card-title-ar" style="display:block;">${arTitle}</span>
+                        </span>
+                    </div>
+                    <div class="info-table-wrap">${tableHTML}</div>
+                </div>
+            `;
+        }
+
+        function cell(en, ar) {
+            return `<span class="en-text" data-text="${stripHTML(en).replace(/"/g, '&quot;')}">${en}</span><span class="ar-text">${ar}</span>`;
+        }
+
+        function toggleCardTranslation(cardId) {
+            const card = document.querySelector(`.topic-card[data-card="${cardId}"]`);
+            if (!card) return;
+            const arItems = card.querySelectorAll('.item-ar');
+            const titleAr = document.getElementById(`${cardId}-title-ar`);
+            const titleEn = card.querySelector('.card-title-en');
+            const btn = card.querySelector('.translate-btn');
+            const isVisible = arItems.length > 0 && arItems[0].classList.contains('show');
+            arItems.forEach(el => el.classList.toggle('show'));
+            if (titleAr) {
+                titleAr.classList.toggle('show');
+                if (titleEn) titleEn.classList.toggle('hidden');
+            }
+            if (btn) {
+                btn.textContent = isVisible ? 'ترجمة' : 'إخفاء';
+                btn.classList.toggle('active');
+            }
+        }
+
+        // ================================================================
+        //  TEXT-TO-SPEECH (TTS) - Hidden, clicks on English text only
+        // ================================================================
+        function initTTS() {
+            if (!window.speechSynthesis) return;
+            if (window.speechSynthesis.getVoices().length === 0) {
+                window.speechSynthesis.onvoiceschanged = function() {};
+            }
+            document.addEventListener('click', function(e) {
+                const target = e.target.closest('.item-en, .en-text');
+                if (!target) return;
+                if (e.target.closest('.translate-btn')) return;
+                const text = (target.getAttribute('data-text') || target.textContent || '').trim();
+                if (!text) return;
+                speakText(text, target);
+            });
+        }
+
+        function speakText(text, element) {
+            const synth = window.speechSynthesis;
+            if (!synth) return;
+            synth.cancel();
+            document.querySelectorAll('.speaking').forEach(el => el.classList.remove('speaking'));
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            const voices = synth.getVoices();
+            const englishVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google'))
+                || voices.find(v => v.lang.startsWith('en-US'))
+                || voices.find(v => v.lang.startsWith('en'));
+            if (englishVoice) utterance.voice = englishVoice;
+
+            utterance.onstart = () => { if (element) element.classList.add('speaking'); };
+            utterance.onend = () => { if (element) element.classList.remove('speaking'); };
+            utterance.onerror = () => { if (element) element.classList.remove('speaking'); };
+            synth.speak(utterance);
+        }
+
+        // ================================================================
+        //  PDF DOWNLOAD — FINAL FIX: single-column flow, no forced breaks
+        //  → No blank pages
+        //  → No one-line pages
+        // ================================================================
+        function downloadPDF(sectionId) {
+            const sec = slidesData[sectionId];
+            if (!sec) return;
+
+            let allSlidesHTML = '';
+            sec.slides.forEach((slide) => {
+                let cardsHTML = '';
+                if (slide.cards) {
+                    slide.cards.forEach(c => { cardsHTML += c; });
+                }
+                allSlidesHTML += `
+                    <div class="pdf-slide">
+                        <div class="pdf-slide-header">
+                            <h2>${slide.title}</h2>
+                        </div>
+                        <div class="pdf-cards">${cardsHTML}</div>
+                    </div>
+                `;
+            });
+
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) {
+                alert('يرجى السماح بالنوافذ المنبثقة لتحميل PDF');
+                return;
+            }
+
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="ar" dir="rtl">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Nursing Ethics</title>
+                    <style>
+                        @page { margin: 12mm 10mm; size: A4; }
+                        * { margin: 0; padding: 0; box-sizing: border-box; }
+                        html, body {
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
+                        }
+                        body {
+                            font-family: 'Segoe UI', Tahoma, sans-serif;
+                            font-size: 13px;
+                            color: #111;
+                            line-height: 1.55;
+                            /* Small orphans/widows so we don't force blank space */
+                            orphans: 2;
+                            widows: 2;
+                        }
+                        /* ===== Subject Header ===== */
+                        .pdf-subject-header {
+                            text-align: center;
+                            border-bottom: 3px solid #0099cc;
+                            padding-bottom: 8px;
+                            margin-bottom: 14px;
+                        }
+                        .pdf-subject-header h1 {
+                            font-size: 26px;
+                            color: #0099cc;
+                            font-weight: 800;
+                            letter-spacing: 2px;
+                        }
+                        .pdf-subject-header .creator {
+                            font-size: 12px;
+                            color: #666;
+                            margin-top: 3px;
+                        }
+
+                        /* ===== Slide ===== */
+                        .pdf-slide {
+                            margin-bottom: 14px;
+                            padding: 0;
+                            page-break-inside: auto;
+                            break-inside: auto;
+                        }
+                        .pdf-slide-header {
+                            margin-bottom: 8px;
+                            padding-bottom: 5px;
+                            border-bottom: 2.5px solid #0099cc;
+                            page-break-after: avoid;
+                            break-after: avoid;
+                        }
+                        .pdf-slide-header h2 {
+                            font-size: 16px;
+                            color: #0077aa;
+                            font-weight: 700;
+                            line-height: 1.35;
+                        }
+
+                        /* ===== Cards flow as single column (reliable in print) ===== */
+                        .pdf-cards {
+                            display: block;
+                        }
+                        .pdf-cards .topic-card {
+                            display: block;
+                            border: 1.5px solid #e0e0e0;
+                            border-radius: 6px;
+                            padding: 8px 10px;
+                            background: #ffffff;
+                            margin-bottom: 8px;
+                            /* NO page-break-inside: avoid → allows natural flow, prevents blank pages */
+                            page-break-inside: auto;
+                            break-inside: auto;
+                        }
+                        .pdf-cards .card-header {
+                            border-bottom: 2px solid #0099cc;
+                            padding-bottom: 4px;
+                            margin-bottom: 6px;
+                            page-break-after: avoid;
+                            break-after: avoid;
+                        }
+                        .pdf-cards .card-title {
+                            font-size: 13.5px;
+                            font-weight: 700;
+                            color: #0077aa;
+                            line-height: 1.35;
+                        }
+                        .pdf-cards .card-title-ar {
+                            font-size: 12px;
+                            color: #555;
+                            font-weight: 400;
+                            display: block;
+                            margin-top: 2px;
+                        }
+                        .pdf-cards .card-title-en { display: block; }
+                        .pdf-cards .translate-btn { display: none; }
+                        .pdf-cards ul { list-style: none; padding: 0; margin: 0; }
+                        .pdf-cards li {
+                            padding: 4px 0;
+                            border-bottom: 1px dotted #e5e5e5;
+                            font-size: 12.5px;
+                            line-height: 1.5;
+                            /* Keep each item intact, but cards can break BETWEEN items */
+                            page-break-inside: avoid;
+                            break-inside: avoid;
+                        }
+                        .pdf-cards li:last-child { border-bottom: none; }
+                        .pdf-cards .item-en {
+                            font-weight: 600;
+                            display: block;
+                            text-align: left;
+                            direction: ltr;
+                            font-size: 12.5px;
+                            color: #111;
+                        }
+                        .pdf-cards .item-ar {
+                            display: block;
+                            color: #555;
+                            font-size: 12px;
+                            text-align: right;
+                            direction: rtl;
+                            padding-right: 6px;
+                            border-right: 3px solid #cce;
+                            margin-top: 3px;
+                            line-height: 1.5;
+                        }
+                        .pdf-cards .highlight-text {
+                            background: #facc15;
+                            color: #0f172a;
+                            padding: 0 3px;
+                            border-radius: 3px;
+                        }
+                        .pdf-cards .numbered { counter-reset: item-counter; }
+                        .pdf-cards .numbered li {
+                            padding-right: 22px;
+                            position: relative;
+                            counter-increment: item-counter;
+                        }
+                        .pdf-cards .numbered li::before {
+                            content: counter(item-counter) "-";
+                            position: absolute;
+                            right: 0;
+                            color: #0099cc;
+                            font-weight: 700;
+                            font-size: 12.5px;
+                        }
+
+                        /* ===== Tables: only rows kept intact ===== */
+                        .info-table-wrap {
+                            margin: 8px 0;
+                            border: 1px solid #ccc;
+                            border-radius: 6px;
+                            overflow: visible;
+                            page-break-inside: auto;
+                            break-inside: auto;
+                        }
+                        .info-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 12px;
+                            page-break-inside: auto;
+                        }
+                        .info-table thead {
+                            display: table-header-group;
+                        }
+                        .info-table tr {
+                            page-break-inside: avoid;
+                            break-inside: avoid;
+                        }
+                        .info-table th {
+                            background: #e6f4fa;
+                            color: #0077aa;
+                            padding: 5px 4px;
+                            text-align: center;
+                            border-bottom: 2px solid #0099cc;
+                            font-weight: 700;
+                        }
+                        .info-table td {
+                            padding: 5px 4px;
+                            border-bottom: 1px solid #e0e0e0;
+                            vertical-align: top;
+                            line-height: 1.45;
+                        }
+                        .info-table tr:last-child td { border-bottom: none; }
+                        .info-table .ar-text {
+                            display: block;
+                            margin-top: 2px;
+                            font-size: 11.5px;
+                            color: #666;
+                        }
+                        .info-table .en-text {
+                            font-size: 12px;
+                            display: inline-block;
+                            text-align: left;
+                            direction: ltr;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="pdf-subject-header">
+                        <h1>NURSING ETHICS</h1>
+                        <div class="creator">Created by MR. YASSIN THARWAT</div>
+                    </div>
+                    ${allSlidesHTML}
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            setTimeout(() => {
+                printWindow.focus();
+                printWindow.print();
+            }, 600);
+        }
+
+        // ================================================================
+        //  DATA: NURSING ETHICS LECTURE 1
+        // ================================================================
+        const ethicsData = {
+            titleEn: 'Lecture 1',
+            titleAr: 'المحاضرة الاولي',
+            slides: [
+                {
+                    title: 'Definition of Terms · تعريف المصطلحات',
+                    cards: [
+                        card('Ethics · الأخلاق', [
+                            { en: 'Reflects the principles or standards that govern proper conduct related to <span class="highlight-text">professional behavior</span>.', ar: 'تعكس المبادئ أو المعايير التي تحكم السلوك الصحيح المتعلق بـ <span class="highlight-text">السلوك المهني</span>.' }
+                        ], 'الأخلاق:'),
+                        card('Values · القيم', [
+                            { en: 'Abstract standards that give a person a sense of <span class="highlight-text">what is right and wrong</span> and establish a code of conduct for living.', ar: 'معايير مجردة تعطي الشخص إحساساً <span class="highlight-text">بما هو صواب وما هو خطأ</span> وتؤسس مدونة سلوك للحياة.' }
+                        ], 'القيم:'),
+                        card('Law · القانون', [
+                            { en: 'Refers to the <span class="highlight-text">codification of values</span> that a community holds in common.', ar: 'يشير إلى <span class="highlight-text">تقنين القيم</span> التي يشترك فيها المجتمع.' }
+                        ], 'القانون:'),
+                        card('Ethics in Nursing · أخلاقيات التمريض', [
+                            { en: 'Nursing ethics state the <span class="highlight-text">duties and obligations</span> of nurses to their clients, other health professionals, the profession, and the community.', ar: 'تحدد أخلاقيات التمريض <span class="highlight-text">الواجبات والالتزامات</span> الملقاة على عاتق الممرضين تجاه مرضاهم، وغيرهم من المهنيين الصحيين، والمهنة، والمجتمع.' }
+                        ], 'أخلاقيات التمريض:'),
+                        card('Professional Nursing · التمريض المهني', [
+                            { en: 'A group of people with <span class="highlight-text">specialized education</span>, knowledge and skills that serve specific social needs.', ar: 'مجموعة من الأشخاص ذوي <span class="highlight-text">تعليم متخصص</span> ومعرفة ومهارات تخدم احتياجات اجتماعية محددة.' }
+                        ], 'التمريض المهني:')
+                    ]
+                },
+                {
+                    title: 'Differentiation Between Law and Ethics · الفرق بين القانون والأخلاق',
+                    cards: [
+                        tableCard(
+                            'Law vs. Ethics · القانون مقابل الأخلاق',
+                            `
+                            <table class="info-table">
+                                <thead><tr>
+                                    <th>${cell('Concepts', 'المفاهيم')}</th>
+                                    <th>${cell('Laws', 'القوانين')}</th>
+                                    <th>${cell('Ethics', 'الأخلاق')}</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr>
+                                        <td>${cell('Source', 'المصدر')}</td>
+                                        <td>${cell('External to one self, rule and regulations of society', 'خارجية عن الذات، قواعد وأنظمة المجتمع')}</td>
+                                        <td>${cell('Internal to oneself, values, beliefs, and individual interpretations', 'داخلية للشخص، القيم، المعتقدات، والتفسيرات الفردية')}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>${cell('Enforcement', 'الإنفاذ')}</td>
+                                        <td>${cell('Courts, statutes and board of nursing', 'المحاكم، القوانين، ومجلس التمريض')}</td>
+                                        <td>${cell('Ethics committees and professional organization', 'لجان الأخلاقيات والمنظمات المهنية')}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            `,
+                            'الفرق بين القانون والأخلاق'
+                        )
+                    ]
+                },
+                {
+                    title: 'Ethical Principles: Respect for Persons & Autonomy · مبادئ الاحترام والاستقلالية',
+                    cards: [
+                        card('(1) Respect for Persons · احترام الأشخاص', [
+                            { en: 'Directs individuals to treat themselves and others with a <span class="highlight-text">respect inherent to man\'s humanness</span>.', ar: 'يوجه الأفراد لمعاملة أنفسهم والآخرين بـ <span class="highlight-text">احترام متأصل في إنسانية الإنسان</span>.' },
+                            { en: 'Requires recognition that all mankind shares a <span class="highlight-text">common human destiny</span>.', ar: 'يتطلب الاعتراف بأن البشرية جمعاء تشترك في <span class="highlight-text">مصير إنساني مشترك</span>.' },
+                            { en: 'A nurse\'s respect for persons generally means <span class="highlight-text">respect for autonomy</span>.', ar: 'احترام الممرض للأشخاص يعني عموماً <span class="highlight-text">احترام الاستقلالية</span>.' }
+                        ], 'احترام الأشخاص:'),
+                        card('(2) Autonomy · الاستقلالية', [
+                            { en: 'Involves the right of <span class="highlight-text">self-determination or choice, independence, and freedom</span>.', ar: 'تتضمن حق <span class="highlight-text">تقرير المصير أو الاختيار، الاستقلال، والحرية</span>.' },
+                            { en: 'Respect for autonomy <span class="highlight-text">does not apply when clients are unconscious</span>. Clients must be able to participate in decision making.', ar: 'احترام الاستقلالية <span class="highlight-text">لا ينطبق عندما يكون العملاء فاقدين للوعي</span>. يجب أن يكون العملاء قادرين على المشاركة في اتخاذ القرار.' },
+                            { en: 'If clients cannot speak for themselves during emergencies, there is <span class="highlight-text">presumed consent</span> based on the following:', ar: 'إذا لم يتمكن العملاء من التحدث عن أنفسهم أثناء حالات الطوارئ، فهناك <span class="highlight-text">موافقة مفترضة</span> بناءً على ما يلي:' },
+                            { en: '<span class="highlight-text">First:</span> It is reasonable to assume that injured or ill clients would want treatment.', ar: '<span class="highlight-text">أولاً:</span> من المعقول افتراض أن العملاء المصابين أو المرضى يرغبون في العلاج.' },
+                            { en: '<span class="highlight-text">Second:</span> Health care providers have a social contract based on social trust that requires that clients be treated and not abandoned if they cannot speak for themselves.', ar: '<span class="highlight-text">ثانياً:</span> مقدمي الرعاية الصحية لديهم عقد اجتماعي قائم على الثقة الاجتماعية يتطلب أن يتم علاج العملاء وعدم التخلي عنهم إذا لم يتمكنوا من التحدث عن أنفسهم.' }
+                        ], 'الاستقلالية:'),
+                        card('Nursing obligations related to respect for autonomy · التزامات التمريض تجاه الاستقلالية', [
+                            { en: '1. <span class="highlight-text">Assist and promote</span> client decision making.', ar: '1. <span class="highlight-text">مساعدة وتعزيز</span> عملية اتخاذ القرار من قبل العميل.' },
+                            { en: '2. Support client\'s rights to <span class="highlight-text">informed consent</span>.', ar: '2. دعم حقوق العميل في <span class="highlight-text">الموافقة المستنيرة</span>.' },
+                            { en: '3. Follow the <span class="highlight-text">advance directives</span> that the clients provide.', ar: '3. اتباع <span class="highlight-text">التوجيهات المسبقة</span> التي يقدمها العملاء.' },
+                            { en: '4. Support <span class="highlight-text">competent client\'s decisions</span>.', ar: '4. دعم <span class="highlight-text">قرارات العميل الكفء</span>.' }
+                        ], 'التزامات التمريض تجاه الاستقلالية:')
+                    ]
+                },
+                {
+                    title: 'Ethical Principles: Non-maleficence, Beneficence & Justice · مبادئ عدم الإضرار والإحسان والعدالة',
+                    cards: [
+                        card('(3) Non maleficence and beneficence · عدم الإضرار والإحسان', [
+                            { en: 'The principles of beneficence and non-maleficence are viewed as a <span class="highlight-text">continuum</span> ranging from not inflicting harm (non-maleficence) to benefiting others (beneficence). The continuum has the following dimensions:', ar: 'يُنظر إلى مبادئ الإحسان وعدم الإضرار على أنها <span class="highlight-text">سلسلة متصلة</span> تتراوح من عدم إلحاق الضرر (عدم الإضرار) إلى إفادة الآخرين (الإحسان). وللسلسلة المتصلة الأبعاد التالية:' },
+                            { en: '1- Non infliction of harm (non-maleficence).', ar: '1- عدم إلحاق الضرر (عدم الإضرار).' },
+                            { en: '2- Removing harmful condition (beneficence).', ar: '2- إزالة الحالة الضارة (الإحسان).' },
+                            { en: '3- Preventing harm (beneficence).', ar: '3- منع الضرر (الإحسان).' },
+                            { en: '4- Doing good or benefiting others (beneficence).', ar: '4- فعل الخير أو إفادة الآخرين (الإحسان).' },
+                            { en: 'Generally, <span class="highlight-text">non-maleficence takes precedence over beneficence</span>. In clinical situation, however, it is often difficult to draw the line between not inflicting harm and preventing or removing harmful situations.', ar: 'بشكل عام، <span class="highlight-text">لعدم الإضرار الأسبقية على الإحسان</span>. لكن في الوضع السريري، غالباً ما يكون من الصعب رسم الخط الفاصل بين عدم إلحاق الضرر ومنع أو إزالة المواقف الضارة.' },
+                            { en: 'The nurse in a well-baby clinic who immunizes children for diphtheria, whooping cough, and tetanus, inflicts some degree of <span class="highlight-text">harm or pain</span>, however the benefit of being protected against whooping cough is more important.', ar: 'الممرضة في عيادة الأطفال الأصحاء التي تطعّم الأطفال ضد الدفتيريا والسعال الديكي والتيتانوس، تُلحق درجة من <span class="highlight-text">الأذى أو الألم</span>، لكن فائدة الحماية من السعال الديكي أكثر أهمية.' },
+                            { en: 'The beneficence principle requires the <span class="highlight-text">balancing of harm and benefits</span> in clinical setting; clients, nurses, physicians must consider the risks and benefits when making decisions related to treatment and research.', ar: 'يتطلب مبدأ الإحسان <span class="highlight-text">موازنة الضرر والفوائد</span> في البيئة السريرية؛ يجب على العملاء والممرضين والأطباء مراعاة المخاطر والفوائد عند اتخاذ القرارات المتعلقة بالعلاج والبحث.' }
+                        ], 'عدم الإضرار والإحسان:'),
+                        card('(4) Justice · العدالة', [
+                            { en: 'Refers to <span class="highlight-text">fairness or equity</span>.', ar: 'تشير إلى <span class="highlight-text">الإنصاف أو العدالة</span>.' }
+                        ], 'العدالة:'),
+                        card('Problems complicating distributive justice · مشاكل تعقيد العدالة التوزيعية', [
+                            { en: 'Each person to receive an <span class="highlight-text">equal share</span>. Not everyone is equal in every way. Sometimes there are situations in which it seems that one person should receive a greater or lesser share than another.', ar: 'كل شخص يتلقى <span class="highlight-text">حصة متساوية</span>. ليس الجميع متساوين في كل شيء. أحياناً تكون هناك مواقف يبدو فيها أن شخصاً ما يجب أن يحصل على حصة أكبر أو أقل من الآخر.' },
+                            { en: '<span class="highlight-text">Resources are limited</span>. There is not always enough for all.', ar: '<span class="highlight-text">الموارد محدودة</span>. ليس هناك دائماً ما يكفي للجميع.' },
+                            { en: 'The distribution of care is determined by the <span class="highlight-text">individual needs</span> of client and by nurses who establish priorities for client needs.', ar: 'يتم تحديد توزيع الرعاية من خلال <span class="highlight-text">الاحتياجات الفردية</span> للعميل ومن قبل الممرضين الذين يحددون أولويات احتياجات العميل.' },
+                            { en: 'Certain clients require <span class="highlight-text">skilled nursing care more than others</span>. To live and avoid permanent disability, these clients are usually more seriously ill and require immediate intervention.', ar: 'بعض العملاء يحتاجون إلى <span class="highlight-text">رعاية تمريضية متخصصة أكثر من غيرهم</span>. للعيش وتجنب الإعاقة الدائمة، عادة ما يكون هؤلاء العملاء أكثر مرضاً ويحتاجون إلى تدخل فوري.' }
+                        ], 'مشاكل العدالة التوزيعية:')
+                    ]
+                },
+                {
+                    title: 'Ethical Principles: Fidelity, Veracity & Confidentiality · الوفاء والصدق والسرية',
+                    cards: [
+                        card('(5) Fidelity · الوفاء', [
+                            { en: 'Refers to the agreement to <span class="highlight-text">keep promises</span> made to clients, families, and other professionals.', ar: 'يشير إلى الاتفاق على <span class="highlight-text">الوفاء بالوعود</span> المقطوعة للعملاء والعائلات والمهنيين الآخرين.' }
+                        ], 'الوفاء:'),
+                        card('(6) Veracity · الصدق', [
+                            { en: 'Refers to <span class="highlight-text">telling the truth</span> or not intentionally deceiving or misleading patients.', ar: 'يشير إلى <span class="highlight-text">قول الحقيقة</span> أو عدم خداع المرضى أو تضليلهم عمداً.' }
+                        ], 'الصدق:'),
+                        card('(7) Confidentiality · السرية', [
+                            { en: 'A basic ethical principle that ensures a client\'s <span class="highlight-text">privacy</span>.', ar: 'مبدأ أخلاقي أساسي يضمن <span class="highlight-text">خصوصية</span> العميل.' }
+                        ], 'السرية:')
+                    ]
+                },
+                {
+                    title: 'Other Ethical Issues: Responsibility & Accountability · المسؤولية والمحاسبة',
+                    cards: [
+                        card('(1) Responsibility · المسؤولية', [
+                            { en: 'Refers to the <span class="highlight-text">execution of duties</span> associated with the nurse\'s particular role.', ar: 'تشير إلى <span class="highlight-text">تنفيذ الواجبات</span> المرتبطة بدور الممرض المحدد.' }
+                        ], 'المسؤولية:'),
+                        card('(2) Accountability · المحاسبة', [
+                            { en: 'Means being <span class="highlight-text">answerable for one\'s own actions</span>.', ar: 'تعني أن يكون الشخص <span class="highlight-text">مسؤولاً عن أفعاله</span>.' },
+                            { en: 'A nurse is <span class="highlight-text">accountable to self</span>.', ar: 'الممرض <span class="highlight-text">مسؤول أمام نفسه</span>.' }
+                        ], 'المحاسبة:'),
+                        card('Professional accountability serves the following purposes · أغراض المحاسبة المهنية', [
+                            { en: '1. To <span class="highlight-text">evaluate new professional practices</span> and reassess existing ones.', ar: '1. <span class="highlight-text">تقييم الممارسات المهنية الجديدة</span> وإعادة تقييم الممارسات الحالية.' },
+                            { en: '2. To <span class="highlight-text">maintain standard of health care</span>.', ar: '2. <span class="highlight-text">الحفاظ على معايير الرعاية الصحية</span>.' },
+                            { en: '3. To facilitate <span class="highlight-text">personal reflection, ethical thought and personal growth</span> on the part of health care professionals.', ar: '3. تسهيل <span class="highlight-text">التأمل الشخصي والتفكير الأخلاقي والنمو الشخصي</span> لدى المهنيين الصحيين.' },
+                            { en: '4. To provide a <span class="highlight-text">basis for ethical decision making</span>.', ar: '4. توفير <span class="highlight-text">أساس لاتخاذ القرارات الأخلاقية</span>.' },
+                            { en: 'To be accountable, the nurse practices within the <span class="highlight-text">code of the profession</span>.', ar: 'لكي يكون الممرض مسؤولاً، يمارس ضمن <span class="highlight-text">مدونة المهنة</span>.' },
+                            { en: 'Accountability requires an <span class="highlight-text">evaluation of the nurse\'s performance</span> in providing nursing care.', ar: 'تتطلب المحاسبة <span class="highlight-text">تقييم أداء الممرض</span> في تقديم الرعاية التمريضية.' }
+                        ], 'أغراض المحاسبة المهنية:')
+                    ]
+                },
+                {
+                    title: 'Competence and Judgment · الكفاءة والحكم',
+                    cards: [
+                        card('(3) Competence · الكفاءة', [
+                            { en: 'A state of having the <span class="highlight-text">knowledge, judgment, skills, energy, experience and motivation</span> required to respond adequately to the demands of one\'s professional responsibilities.', ar: 'حالة امتلاك <span class="highlight-text">المعرفة، الحكم، المهارات، الطاقة، الخبرة والدافع</span> المطلوبة للاستجابة بشكل مناسب لمتطلبات المسؤوليات المهنية.' }
+                        ], 'الكفاءة:'),
+                        card('(4) Judgment · الحكم', [
+                            { en: 'Refers to the ability to <span class="highlight-text">form an opinion or draw sound conclusions</span>.', ar: 'تشير إلى القدرة على <span class="highlight-text">تكوين رأي أو استخلاص استنتاجات سليمة</span>.' }
+                        ], 'الحكم:')
+                    ]
+                }
+            ]
+        };
+
+        // ================================================================
+        //  DATA: NURSING ETHICS LECTURE 2
+        // ================================================================
+        const ethicsData2 = {
+            titleEn: 'Lecture 2',
+            titleAr: 'المحاضرة الثانية',
+            slides: [
+                {
+                    title: 'Code of Ethics · مدونة الأخلاقيات',
+                    cards: [
+                        card('Definition of Code of Ethics · تعريف مدونة الأخلاقيات', [
+                            { en: 'A code of ethics makes explicit the <span class="highlight-text">primary goals, values, and obligations</span> of the profession.', ar: 'توضح مدونة الأخلاقيات <span class="highlight-text">الأهداف والقيم والالتزامات الأساسية</span> للمهنة.' }
+                        ], 'تعريف مدونة الأخلاقيات:'),
+                        card('Introduction · مقدمة', [
+                            { en: 'Ethics is an integral part of the foundation of nursing. Nursing has a distinguished history of concern for the welfare of the sick, injured, and vulnerable and for social justice. This concern is embodied in the provision of nursing care to individuals and the community.', ar: 'الأخلاقيات جزء لا يتجزأ من أساس التمريض. يتمتع التمريض بتاريخ حافل بالاهتمام برعاية المرضى والمصابين والضعفاء وللعدالة الاجتماعية. يتجسد هذا الاهتمام في تقديم الرعاية التمريضية للأفراد والمجتمع.' }
+                        ], 'مقدمة:')
+                    ]
+                },
+                {
+                    title: 'Purposes of Code of Ethics · أغراض مدونة الأخلاقيات',
+                    cards: [
+                        card('Purposes of Code of Ethics for Nurses · أغراض مدونة الأخلاقيات للممرضين', [
+                            { en: 'It is a succinct statement of the <span class="highlight-text">ethical obligations and duties</span> of every individual who enters the nursing profession.', ar: 'إنها بيان موجز <span class="highlight-text">بالالتزامات والواجبات الأخلاقية</span> لكل فرد يدخل مهنة التمريض.' },
+                            { en: 'It is the profession\'s <span class="highlight-text">nonnegotiable ethical standard</span>.', ar: 'إنها <span class="highlight-text">المعيار الأخلاقي غير القابل للتفاوض</span> للمهنة.' },
+                            { en: 'It is an expression of nursing\'s own understanding of its <span class="highlight-text">commitment to society</span>.', ar: 'إنها تعبير عن فهم التمريض الخاص لـ <span class="highlight-text">التزامه تجاه المجتمع</span>.' }
+                        ], 'أغراض مدونة الأخلاقيات للممرضين:')
+                    ]
+                },
+                {
+                    title: 'ANA Code of Ethics: Provisions 1-3 · الأحكام 1-3',
+                    cards: [
+                        card('Provision 1: Respect · الحكم الأول: الاحترام', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The nurse practices with compassion and respect for the inherent dignity, worth, and unique attributes of every person.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. يمارس الممرض مهنته برأفة واحترام للكرامة المتأصلة والقيمة والسمات الفريدة لكل شخص.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Compassion, dignity, respect for patient values, unbiased care and respectful communication.', ar: '<span class="highlight-text">التطبيق العملي:</span> الرحمة، احترام الكرامة، احترام قيم المريض، تقديم رعاية بلا تحيز والتواصل المحترم.' }
+                        ], 'الحكم الأول:'),
+                        card('Provision 2: Patient Commitment · الحكم الثاني: الالتزام بالمريض', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The nurse\'s primary commitment is to the patient, whether an individual, family, group, community, or population.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. التزام الممرض الأساسي هو تجاه المريض، سواء كان فرداً أو أسرة أو مجموعة أو مجتمعاً أو سكاناً.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Patient and family advocacy, informed choices, care coordination, confidentiality and avoiding conflicts of interest.', ar: '<span class="highlight-text">التطبيق العملي:</span> الدفاع عن المريض والأسرة، الخيارات المستنيرة، تنسيق الرعاية، السرية وتجنب تضارب المصالح.' }
+                        ], 'الحكم الثاني:'),
+                        card('Provision 3: Rights and Safety · الحكم الثالث: الحقوق والسلامة', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The nurse promotes, advocates for, and protects the rights, health, and safety of the patient.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. يعزز الممرض ويدافع ويحمي حقوق وصحة وسلامة المريض.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Protecting privacy, informed consent, patient safety, reporting errors and advocating for patient rights.', ar: '<span class="highlight-text">التطبيق العملي:</span> حماية الخصوصية، الموافقة المستنيرة، سلامة المريض، الإبلاغ عن الأخطاء والدفاع عن حقوق المريض.' }
+                        ], 'الحكم الثالث:')
+                    ]
+                },
+                {
+                    title: 'ANA Code of Ethics: Provisions 4-6 · الأحكام 4-6',
+                    cards: [
+                        card('Provision 4: Accountability · الحكم الرابع: المساءلة', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The nurse has authority, accountability, and responsibility for nursing practice; makes decisions; and takes action consistent with the obligation to promote health and to provide optimal care.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. يمتلك الممرض السلطة والمساءلة والمسؤولية عن ممارسة التمريض؛ ويتخذ القرارات؛ ويتخذ الإجراءات بما يتوافق مع الالتزام بتعزيز الصحة وتقديم الرعاية المثلى.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Competent practice, safe delegation, accurate documentation, professional boundaries and taking responsibility for decisions.', ar: '<span class="highlight-text">التطبيق العملي:</span> الممارسة الكفؤة، التفويض الآمن، التوثيق الدقيق، الحدود المهنية وتحمل مسؤولية القرارات.' }
+                        ], 'الحكم الرابع:'),
+                        card('Provision 5: Duties to Self · الحكم الخامس: الواجبات تجاه الذات', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The nurse owes the same duties to self as to others, including promoting health and safety, preserving integrity, maintaining competence, and pursuing personal and professional growth.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. يدين الممرض بنفس الواجبات تجاه نفسه كما تجاه الآخرين، بما في ذلك تعزيز الصحة والسلامة، والحفاظ على النزاهة، والحفاظ على الكفاءة، والسعي للنمو الشخصي والمهني.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Self-care, professional boundaries, lifelong learning and personal integrity.', ar: '<span class="highlight-text">التطبيق العملي:</span> العناية بالذات، الحدود المهنية، التعلم المستمر والنزاهة الشخصية.' }
+                        ], 'الحكم الخامس:'),
+                        card('Provision 6: Ethical Work Environment · الحكم السادس: بيئة عمل أخلاقية', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The nurse establishes, maintains, and improves the ethical environment of the work setting and conditions that support safe, quality health care.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. ينشئ الممرض ويحافظ ويحسن البيئة الأخلاقية لمكان العمل والظروف التي تدعم الرعاية الصحية الآمنة وعالية الجودة.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Respectful culture, safe staffing, fairness, teamwork and addressing bullying.', ar: '<span class="highlight-text">التطبيق العملي:</span> ثقافة الاحترام، التوظيف الآمن، الإنصاف، العمل الجماعي ومعالجة التنمر.' }
+                        ], 'الحكم السادس:')
+                    ]
+                },
+                {
+                    title: 'ANA Code of Ethics: Provisions 7-9 · الأحكام 7-9',
+                    cards: [
+                        card('Provision 7: Advancing the Profession · الحكم السابع: تطوير المهنة', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The nurse advances the profession through research, scholarly inquiry, professional standards development, and the generation of nursing and health policy.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. يطور الممرض المهنة من خلال البحث والاستقصاء العلمي وتطوير المعايير المهنية والمساهمة في صياغة سياسات التمريض والصحة.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Evidence-based practice, research integrity, education, innovation and policy development.', ar: '<span class="highlight-text">التطبيق العملي:</span> الممارسة القائمة على الأدلة، نزاهة البحث، التعليم، الابتكار وتطوير السياسات.' }
+                        ], 'الحكم السابع:'),
+                        card('Provision 8: Collaboration · الحكم الثامن: التعاون', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The nurse collaborates with other health professionals and the public to protect human rights, promote health diplomacy, and reduce health disparities.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. يتعاون الممرض مع المهنيين الصحيين الآخرين والجمهور لحماية حقوق الإنسان، وتعزيز الدبلوماسية الصحية، والحد من التفاوتات الصحية.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Interprofessional teamwork, respectful communication, community partnerships, health equity and reducing disparities.', ar: '<span class="highlight-text">التطبيق العملي:</span> العمل الجماعي بين التخصصات، التواصل المحترم، الشراكات المجتمعية، الإنصاف الصحي والحد من التفاوتات.' }
+                        ], 'الحكم الثامن:'),
+                        card('Provision 9: Social Justice · الحكم التاسع: العدالة الاجتماعية', [
+                            { en: '<span class="highlight-text">Core ethical responsibility</span>. The profession of nursing, collectively through its professional organizations, must articulate nursing values, maintain the integrity of the profession, and integrate principles of social justice into nursing and health policy.', ar: '<span class="highlight-text">المسؤولية الأخلاقية الأساسية</span>. يجب على مهنة التمريض، بشكل جماعي من خلال منظماتها المهنية، أن تعبر عن قيم التمريض، وتحافظ على نزاهة المهنة، وتدمج مبادئ العدالة الاجتماعية في سياسات التمريض والصحة.' },
+                            { en: '<span class="highlight-text">Practical focus:</span> Advocacy for vulnerable groups, equitable access to care, social justice in policy and reducing health disparities.', ar: '<span class="highlight-text">التطبيق العملي:</span> الدفاع عن الفئات الضعيفة، الوصول العادل للرعاية، العدالة الاجتماعية في السياسات والحد من التفاوتات الصحية.' }
+                        ], 'الحكم التاسع:')
+                    ]
+                }
+            ]
+        };
+
+        // ================================================================
+        //  BUILD APP
+        // ================================================================
+        const slidesData = { ethics: ethicsData, ethics2: ethicsData2 };
+        const sectionOrder = ['ethics', 'ethics2'];
+
+        function renderSlideContent(slide) {
+            if (slide.cards && Array.isArray(slide.cards)) {
+                return createSlideHTML(slide.title, slide.cards.join(''));
+            }
+            return createSlideHTML(slide.title, '');
+        }
+
+        function buildApp() {
+            const tabsContainer = document.getElementById('tabsContainer');
+            const sectionsContainer = document.getElementById('sectionsContainer');
+
+            sectionOrder.forEach((secId, index) => {
+                const sec = slidesData[secId];
+                if (!sec) return;
+
+                const tab = document.createElement('button');
+                tab.className = 'tab-btn' + (index === 0 ? ' active' : '');
+                tab.innerHTML = `<span class="en">${sec.titleEn}</span><span class="ar">${sec.titleAr}</span>`;
+                tab.onclick = () => switchTab(secId, tab);
+                tabsContainer.appendChild(tab);
+
+                const cardEl = document.createElement('div');
+                cardEl.className = 'card' + (index === 0 ? ' active' : '');
+                cardEl.id = `section-${secId}`;
+
+                const slidesHTML = sec.slides.map(s => renderSlideContent(s)).join('');
+                const totalSlides = sec.slides.length;
+
+                cardEl.innerHTML = `
+                    <h2>${sec.titleEn} · ${sec.titleAr}</h2>
+                    <div style="text-align:center; margin-bottom:12px;">
+                        <button class="pdf-btn" onclick="downloadPDF('${secId}')">📄 تحميل المحاضرة PDF</button>
+                    </div>
+                    <div class="slide-container" id="slideContainer-${secId}">
+                        <div class="slide-progress">
+                            <span style="font-weight:600;">التقدم</span>
+                            <div class="bar"><div class="fill" style="width:0%;"></div></div>
+                            <span class="count">1 / ${totalSlides}</span>
+                        </div>
+                        ${slidesHTML}
+                        <div class="slide-nav">
+                            <button class="btn-nav prev" onclick="goToSlide('${secId}', 'slideContainer-${secId}', slideState['${secId}'].current - 1)">السابق</button>
+                            <button class="btn-nav next primary" onclick="goToSlide('${secId}', 'slideContainer-${secId}', slideState['${secId}'].current + 1)">التالي</button>
+                        </div>
+                    </div>
+                `;
+                sectionsContainer.appendChild(cardEl);
+
+                initSlideState(secId, totalSlides);
+                setTimeout(() => renderSlide(secId, `slideContainer-${secId}`), 50);
+            });
+
+            setTimeout(() => initTTS(), 200);
+        }
+
+        function switchTab(secId, tabEl) {
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+            document.getElementById(`section-${secId}`).classList.add('active');
+            tabEl.classList.add('active');
+        }
+
+        // ================================================================
+        //  INIT
+        // ================================================================
+        applyTheme(localStorage.getItem('theme') || 'dark');
+        buildApp();
+
+        window.goToSlide = goToSlide;
+        window.slideState = slideState;
+        window.toggleTheme = toggleTheme;
+        window.toggleCardTranslation = toggleCardTranslation;
+        window.downloadPDF = downloadPDF;
+    </script>
+</body>
+</html>
